@@ -7,11 +7,9 @@
   <meta name="description" content="Fast, accurate, and stress-free tax preparation by Tyrie Reed — your local expert in Norfolk and Hampton Roads. Backed by Chosen Tax Professionals." />
   <meta name="theme-color" content="#0f2337" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Tyrie Reed • Local Tax Preparer" />
   <meta property="og:description" content="Professional tax preparation in Norfolk, VA by Tyrie Reed — backed by Chosen Tax Professionals." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/" />
   <meta property="og:image" content="images/headshot-placeholder.jpg" />
 
   <style>
@@ -25,13 +23,12 @@
     *{box-sizing:border-box}
     html,body{
       margin:0;padding:0;background:#f7f9fc;color:var(--text);
-      font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans;
-      line-height:1.5; overflow-x:hidden;
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans;
+      line-height:1.5;overflow-x:hidden;
     }
     a{color:var(--bg);text-decoration:none}
     img{max-width:100%;display:block;border-radius:10px}
 
-    /* Visibility helpers */
     .desktop-only{display:block}
     .mobile-only{display:none}
     @media(max-width:768px){
@@ -39,13 +36,11 @@
       .mobile-only{display:inline-block}
     }
 
-    /* Top notice (keep for deadline) */
     .notice{
       background:linear-gradient(90deg,var(--primary),#ffd166);
       color:#2b2b2b;padding:.65rem 1rem;text-align:center;font-weight:700;font-size:.95rem;
     }
 
-    /* Header */
     header{
       position:sticky;top:0;z-index:50;background:#fff;
       border-bottom:1px solid var(--line);backdrop-filter:saturate(180%) blur(6px);
@@ -60,23 +55,20 @@
       width:36px;height:36px;border-radius:10px;background:var(--bg);
       color:#fff;display:grid;place-items:center;font-weight:900;flex-shrink:0;
     }
-    .brand > div:last-child{min-width:0;display:flex;flex-direction:column;line-height:1.1;}
+    .brand > div:last-child{display:flex;flex-direction:column;line-height:1.1;}
     .brand > div:last-child > div{overflow-wrap:anywhere;word-break:break-word;}
     .nav-cta{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;}
 
-    /* Buttons: split-tone + invert hover */
-    .btn, button{
+    /* Split-tone buttons */
+    .btn{
       appearance:none;border:2px solid var(--primary);cursor:pointer;font-weight:900;border-radius:12px;
       padding:.9rem 1.15rem;transition:transform .06s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+      background:var(--bg);color:#fff;box-shadow:inset 0 -2px 0 rgba(0,0,0,.08);
     }
-    .btn-split{
-      background:var(--bg); color:#fff; border-color:var(--primary);
-      box-shadow: 0 2px 0 rgba(0,0,0,.04), inset 0 -2px 0 rgba(0,0,0,.08);
-    }
-    .btn-split:hover{
-      background:var(--primary); color:var(--bg); border-color:var(--primary);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(247,181,0,.25);
+    .btn:hover{
+      background:var(--primary);color:var(--bg);border-color:var(--primary);
+      transform:translateY(-1px);
+      box-shadow:0 6px 16px rgba(247,181,0,.25);
     }
 
     @media(max-width:480px){
@@ -85,16 +77,19 @@
       .brand-badge{width:30px;height:30px;border-radius:8px;font-size:.9rem;}
       .brand > div:last-child > div:first-child{font-size:.98rem}
       .brand > div:last-child > div:last-child{font-size:.8rem}
-      /* Keep Intake Form; hide secondary only if space is tight */
-      .nav-cta a:last-child{display:none;} /* hide Message Me in header on tiny screens */
+
+      /* Hide only header Intake Form button on mobile */
+      header .nav-cta a[href*="jotform"],
+      header .nav-cta a[href="#intake"]{
+        display:none!important;
+      }
+
       .nav-cta .btn{white-space:nowrap;}
     }
-    header .wrap{overflow-x:clip;}
 
-    /* Hero */
     .hero{
-      background: radial-gradient(1200px 600px at 90% -50%, #1b3a57 0%, transparent 60%), var(--bg);
-      color:#fff;padding: clamp(36px, 6vw, 80px) 0;overflow:hidden;
+      background:radial-gradient(1200px 600px at 90% -50%,#1b3a57 0%,transparent 60%),var(--bg);
+      color:#fff;padding:clamp(36px,6vw,80px) 0;overflow:hidden;
     }
     .hero-grid{display:grid;gap:26px;align-items:center;}
     @media(min-width:980px){.hero-grid{grid-template-columns:1.1fr .9fr;gap:44px;}}
@@ -102,7 +97,7 @@
     .hero p.lead{color:#e5edf7;font-size:clamp(1rem,1.4vw,1.15rem);margin-bottom:1.2rem;}
     .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0 1.1rem}
     .chip{border:1px solid rgba(255,255,255,.22);color:#eaf2fb;
-      padding:.4rem .6rem;border-radius:999px;font-weight:700;font-size:.9rem;backdrop-filter: blur(2px);}
+      padding:.4rem .6rem;border-radius:999px;font-weight:700;font-size:.9rem;backdrop-filter:blur(2px);}
     .hero-card{
       background:var(--card);color:var(--text);border-radius:var(--radius);
       box-shadow:var(--shadow);padding:18px;max-width:560px;margin:0 auto;
@@ -113,7 +108,6 @@
     }
     @media(max-width:768px){.headshot{margin:auto;margin-top:1rem;}}
 
-    /* Sections */
     section{padding:clamp(38px,5.4vw,80px) 0;}
     .section-title{margin:0 0 1rem;font-size:clamp(1.5rem,2.4vw,2rem);}
     .grid-3{display:grid;gap:16px;}
@@ -123,7 +117,6 @@
     .muted{color:var(--muted)}
     .row{display:flex;gap:.6rem;flex-wrap:wrap}
 
-    /* Callout */
     .callout{
       background:linear-gradient(180deg,#ffffff,#f2f6fb);border:1px solid var(--line);
       border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
@@ -131,55 +124,34 @@
     }
     @media(min-width:860px){.callout{grid-template-columns:2.2fr 1fr;}}
 
-    /* Footer */
     footer{background:var(--bg-2);color:#cfe0f2;padding:36px 0;border-top:1px solid #0b1b2a;}
     footer a{color:#fff;text-decoration:underline;}
     .foot-grid{display:grid;gap:18px;}
     @media(min-width:860px){.foot-grid{grid-template-columns:2fr 1fr 1fr;}}
     .subtle{color:#9bb0c6;font-size:.92rem;}
 
-    /* Desktop-only Jotform embed */
     .jotform-frame{
       width:100%;height:900px;border:none;border-radius:14px;
       background:#fff;box-shadow:var(--shadow-soft);
     }
 
-    /* === Sticky Mobile CTA (big tappable “Cash Advance up to $7,500”) === */
-    .sticky-cta {
-      position: fixed;
-      left: 12px; right: 12px; bottom: 12px;
-      z-index: 100;
-      display: none; /* desktop hidden */
+    /* Sticky CTA Cash Advance */
+    .sticky-cta{
+      position:fixed;left:12px;right:12px;bottom:12px;
+      z-index:100;display:none;
     }
     .sticky-cta-link{
-      display:flex; align-items:center; justify-content:center;
-      width:100%;
-      background: var(--bg);
-      color:#fff;
-      border:2px solid var(--primary);
-      border-radius:16px;
-      padding:14px 16px;
-      font-weight:900;
-      font-size:1.02rem;
-      letter-spacing:.2px;
-      text-align:center;
-      box-shadow: 0 6px 16px rgba(15,35,55,.22), 0 0 0 2px rgba(247,181,0,.0);
-      transition: background .2s ease, color .2s ease, transform .06s ease, box-shadow .2s ease, border-color .2s ease;
+      display:flex;align-items:center;justify-content:center;
+      width:100%;background:var(--bg);color:#fff;border:2px solid var(--primary);
+      border-radius:16px;padding:14px 16px;font-weight:900;font-size:1.02rem;letter-spacing:.2px;
+      box-shadow:0 6px 16px rgba(15,35,55,.22);
+      transition:background .2s,color .2s,transform .06s,box-shadow .2s;
     }
     .sticky-cta-link:hover{
-      background: var(--primary);
-      color: var(--bg);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(247,181,0,.28);
-      border-color: var(--primary);
+      background:var(--primary);color:var(--bg);transform:translateY(-1px);
+      box-shadow:0 10px 22px rgba(247,181,0,.28);
     }
-    .sticky-cta-link .big{
-      font-size:1.05rem;
-      margin-right:.35rem;
-    }
-    @media (max-width: 768px){
-      .sticky-cta { display:block; }
-    }
+    @media(max-width:768px){.sticky-cta{display:block;}}
   </style>
 </head>
 <body>
@@ -198,14 +170,10 @@
         </div>
       </div>
 
-      <!-- Header CTAs -->
       <div class="nav-cta">
-        <!-- Desktop: Intake scrolls to embed -->
-        <a class="btn btn-split desktop-only" href="#intake">Intake Form</a>
-        <!-- Mobile: Intake opens Jotform in new tab -->
-        <a class="btn btn-split mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
-
-        <a class="btn btn-split" href="mailto:tyrie7@gmail.com">Message Me</a>
+        <a class="btn desktop-only" href="#intake">Intake Form</a>
+        <a class="btn mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
+        <a class="btn" href="mailto:tyrie7@gmail.com">Message Me</a>
       </div>
     </div>
   </header>
@@ -221,30 +189,17 @@
         <h1>Expert Tax Prep with a Local Touch — Backed by <span style="color:#ffd166">Chosen Tax Professionals</span></h1>
         <p class="lead">I’m <strong>Tyrie Reed</strong>, your neighborhood tax preparer serving Norfolk and Hampton Roads. Whether individual or business, I make filing fast, accurate, and stress-free.</p>
 
-        <!-- Headshot -->
         <img src="images/headshot-placeholder.jpg" alt="Professional headshot of Tyrie Reed" class="headshot" />
 
         <div class="row" style="margin:18px 0;">
-          <!-- Desktop: scroll to intake -->
-          <a class="btn btn-split desktop-only" href="#intake">Intake Form</a>
-          <!-- Mobile: open Jotform -->
-          <a class="btn btn-split mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
-
-          <a class="btn btn-split" href="mailto:treed.chosentax@gmail.com">Message Me</a>
+          <a class="btn desktop-only" href="#intake">Intake Form</a>
+          <a class="btn mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
+          <a class="btn" href="mailto:tyrie7@gmail.com">Message Me</a>
         </div>
       </div>
 
-      <!-- Desktop-only embedded form -->
-      <div class="hero-card desktop-only" id="intake" aria-label="Intake form">
-        <iframe
-          src="https://form.jotform.com/250008458652153"
-          class="jotform-frame"
-          frameborder="0"
-          scrolling="auto"
-          allowtransparency="true"
-          allowfullscreen
-          title="Intake Form"
-        ></iframe>
+      <div class="hero-card desktop-only" id="intake">
+        <iframe src="https://form.jotform.com/250008458652153" class="jotform-frame" title="Intake Form"></iframe>
         <p class="muted" style="margin-top:10px;">
           Prefer fullscreen? <a href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Open in new tab</a>.
         </p>
@@ -252,7 +207,6 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section id="services">
     <div class="wrap">
       <h2 class="section-title">Services & Specialties</h2>
@@ -267,56 +221,19 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section>
-    <div class="wrap">
-      <h2 class="section-title">How It Works</h2>
-      <div class="grid-3">
-        <div class="card"><h4>1. Intake</h4><p class="muted">Complete the intake form (desktop inline or mobile fullscreen).</p></div>
-        <div class="card"><h4>2. Upload</h4><p class="muted">Securely send W-2s, 1099s, receipts, and documents via encrypted portal.</p></div>
-        <div class="card"><h4>3. File</h4><p class="muted">I prepare and e-file your return; you review, sign, and relax.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CALL TO ACTION -->
-  <section>
-    <div class="wrap">
-      <div class="callout">
-        <div>
-          <h3 style="margin:0 0 .4rem">Why Clients Choose This Service</h3>
-          <ul style="margin:0; padding-left:18px; color:#415164; line-height:1.7">
-            <li>Local attention with the strength of <strong>Chosen Tax Professionals</strong> behind the scenes</li>
-            <li>Transparent pricing, no surprises</li>
-            <li>Fast e-file and direct deposit</li>
-            <li>Maximum refund approach</li>
-            <li>Available year-round for questions</li>
-          </ul>
-        </div>
-        <div style="display:grid; align-content:center; gap:.6rem">
-          <a class="btn btn-split desktop-only" href="#intake">Intake Form</a>
-          <a class="btn btn-split mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
-          <a class="btn btn-split" href="mailto:tyrie7@gmail.com">Message Me</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HELPFUL LINKS -->
   <section>
     <div class="wrap">
       <h2 class="section-title">Helpful Links</h2>
       <div class="row">
-        <a class="btn btn-split" href="https://www.irs.gov/refunds" target="_blank" rel="noopener">Where’s My Refund</a>
-        <a class="btn btn-split" href="https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin" target="_blank" rel="noopener">Get My IP PIN</a>
-        <a class="btn btn-split" href="https://www.irs.gov/identity-theft-fraud-scams/identity-verification-for-irs-letter-recipients" target="_blank" rel="noopener">Verify My Return</a>
-        <a class="btn btn-split" href="https://www.healthcare.gov/" target="_blank" rel="noopener">Marketplace Insurance</a>
+        <a class="btn" href="https://www.irs.gov/refunds" target="_blank">Where’s My Refund</a>
+        <a class="btn" href="https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin" target="_blank">Get My IP PIN</a>
+        <a class="btn" href="https://www.irs.gov/identity-theft-fraud-scams/identity-verification-for-irs-letter-recipients" target="_blank">Verify My Return</a>
+        <a class="btn" href="https://www.healthcare.gov/" target="_blank">Marketplace Insurance</a>
       </div>
       <p class="muted" style="margin-top:10px">All links open official government websites in a new tab.</p>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="wrap foot-grid">
       <div>
@@ -326,12 +243,7 @@
       </div>
       <div>
         <div class="subtle" style="font-weight:800;color:#fff;margin-bottom:.3rem;">Contact</div>
-        <div class="subtle">Email: <a href="mailto:tyrie7@gmail.com">tyrie7@gmail.com</a></div>
-      </div>
-      <div>
-        <div class="subtle" style="font-weight:800;color:#fff;margin-bottom:.3rem;">Links</div>
-        <div class="subtle desktop-only"><a href="#intake">Intake Form</a></div>
-        <div class="subtle mobile-only"><a href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a></div>
+        <div class="subtle">Email: <a href="mailto:treed.chosentax@gmail.com">treed.chosentax@gmail.com</a></div>
       </div>
     </div>
     <div class="wrap" style="margin-top:18px">
@@ -339,18 +251,12 @@
     </div>
   </footer>
 
-  <!-- Sticky Mobile CTA: big tappable cash advance -->
   <div class="sticky-cta" role="dialog" aria-label="Cash advance">
-    <a class="sticky-cta-link"
-       href="https://form.jotform.com/250008458652153"
-       target="_blank" rel="noopener"
-       title="Open Intake Form">
-      <span class="big">💸 Cash Advance up to $7,500</span> • Tap to start intake
+    <a class="sticky-cta-link" href="https://form.jotform.com/250008458652153" target="_blank">
+      💸 Cash Advance up to $7,500 • Tap to Start Intake
     </a>
   </div>
 
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 </body>
 </html>
