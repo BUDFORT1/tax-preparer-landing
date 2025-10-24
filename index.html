@@ -134,22 +134,29 @@
     }
 
     /* Sticky CTA Cash Advance */
-    .sticky-cta{
-      position:fixed;left:12px;right:12px;bottom:12px;
-      z-index:100;display:none;
-    }
-    .sticky-cta-link{
-      display:flex;align-items:center;justify-content:center;
-      width:100%;background:var(--bg);color:#fff;border:2px solid var(--primary);
-      border-radius:16px;padding:14px 16px;font-weight:900;font-size:1.02rem;letter-spacing:.2px;
-      box-shadow:0 6px 16px rgba(15,35,55,.22);
-      transition:background .2s,color .2s,transform .06s,box-shadow .2s;
-    }
-    .sticky-cta-link:hover{
-      background:var(--primary);color:var(--bg);transform:translateY(-1px);
-      box-shadow:0 10px 22px rgba(247,181,0,.28);
-    }
-    @media(max-width:768px){.sticky-cta{display:block;}}
+    /* Sticky CTA Cash Advance (Gold with Blue Outline) */
+.sticky-cta{
+  position:fixed;left:12px;right:12px;bottom:12px;
+  z-index:100;display:none;
+}
+.sticky-cta-link{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;
+  background:var(--primary);        /* gold background */
+  color:var(--bg);                  /* navy text */
+  border:2px solid var(--bg);       /* navy outline */
+  border-radius:16px;
+  padding:14px 16px;
+  font-weight:900;font-size:1.02rem;letter-spacing:.2px;
+  box-shadow:0 6px 16px rgba(15,35,55,.18);
+  transition:background .2s,color .2s,transform .06s,box-shadow .2s;
+}
+.sticky-cta-link:hover{
+  background:var(--bg);color:var(--primary);
+  transform:translateY(-1px);
+  box-shadow:0 10px 22px rgba(15,35,55,.35);
+}
+@media(max-width:768px){.sticky-cta{display:block;}}
 
     /* Back-to-top button */
     .back-to-top{
