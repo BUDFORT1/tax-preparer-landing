@@ -535,3 +535,47 @@
   </script>
 </body>
 </html>
+/* ===== Mobile header fixes ===== */
+
+/* Let header content wrap cleanly */
+.nav{ flex-wrap: wrap; row-gap: 8px; }
+
+/* Prevent brand text from overflowing */
+.brand{ min-width: 0; gap: .6rem; }
+.brand-badge{ flex-shrink: 0; }
+
+/* Target the text container inside .brand (2nd child) */
+.brand > div:last-child{
+  min-width: 0;            /* allow flex item to shrink */
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+/* Make long names/subtitles wrap instead of overflow */
+.brand > div:last-child > div{
+  overflow-wrap: anywhere; /* modern safe wrap */
+  word-break: break-word;  /* fallback */
+}
+
+/* So buttons don't squeeze the brand on tiny phones */
+@media (max-width: 480px){
+  .wrap{ padding-left: 14px; padding-right: 14px; }
+  header .nav{ height: auto; padding: 6px 0; }
+
+  /* Slightly smaller badge and text for tighter spaces */
+  .brand-badge{ width: 30px; height: 30px; border-radius: 8px; font-size: .9rem; }
+
+  /* Reduce the inline-sized title/subtitle without touching your markup */
+  header .brand > div:last-child > div:first-child{ font-size: .98rem !important; }
+  header .brand > div:last-child > div:last-child{ font-size: .8rem !important; }
+
+  /* Hide the secondary (ghost) button to free space; keep primary CTA */
+  .nav-cta .btn-ghost{ display: none; }
+
+  /* If your CTA label is long, prevent wrap jitter */
+  .nav-cta .btn{ white-space: nowrap; }
+}
+
+/* Extra safety: avoid horizontal scroll from any header child */
+header .wrap{ overflow-x: clip; }
