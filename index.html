@@ -39,7 +39,7 @@
       .mobile-only{display:inline-block}
     }
 
-    /* Top notice */
+    /* Top notice (keep for deadline) */
     .notice{
       background:linear-gradient(90deg,var(--primary),#ffd166);
       color:#2b2b2b;padding:.65rem 1rem;text-align:center;font-weight:700;font-size:.95rem;
@@ -64,13 +64,20 @@
     .brand > div:last-child > div{overflow-wrap:anywhere;word-break:break-word;}
     .nav-cta{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;}
 
+    /* Buttons: split-tone + invert hover */
     .btn, button{
-      appearance:none;border:0;cursor:pointer;font-weight:800;border-radius:12px;
-      padding:.85rem 1.1rem;transition:transform .06s ease, box-shadow .2s ease;
+      appearance:none;border:2px solid var(--primary);cursor:pointer;font-weight:900;border-radius:12px;
+      padding:.9rem 1.15rem;transition:transform .06s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
     }
-    .btn-primary{background:var(--bg);color:#fff;box-shadow:var(--shadow-soft);}
-    .btn-primary:hover{transform:translateY(-1px)}
-    .btn-ghost{background:#fff;color:var(--bg);border:1px solid var(--line);}
+    .btn-split{
+      background:var(--bg); color:#fff; border-color:var(--primary);
+      box-shadow: 0 2px 0 rgba(0,0,0,.04), inset 0 -2px 0 rgba(0,0,0,.08);
+    }
+    .btn-split:hover{
+      background:var(--primary); color:var(--bg); border-color:var(--primary);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(247,181,0,.25);
+    }
 
     @media(max-width:480px){
       .wrap{padding-left:14px;padding-right:14px;}
@@ -78,8 +85,8 @@
       .brand-badge{width:30px;height:30px;border-radius:8px;font-size:.9rem;}
       .brand > div:last-child > div:first-child{font-size:.98rem}
       .brand > div:last-child > div:last-child{font-size:.8rem}
-      /* Keep Intake Form; hide secondary if space is tight */
-      .nav-cta .btn-ghost{display:none;}
+      /* Keep Intake Form; hide secondary only if space is tight */
+      .nav-cta a:last-child{display:none;} /* hide Message Me in header on tiny screens */
       .nav-cta .btn{white-space:nowrap;}
     }
     header .wrap{overflow-x:clip;}
@@ -87,7 +94,7 @@
     /* Hero */
     .hero{
       background: radial-gradient(1200px 600px at 90% -50%, #1b3a57 0%, transparent 60%), var(--bg);
-      color:#fff;padding: clamp(24px, 6vw, 80px) 0 0;overflow:hidden;
+      color:#fff;padding: clamp(36px, 6vw, 80px) 0;overflow:hidden;
     }
     .hero-grid{display:grid;gap:26px;align-items:center;}
     @media(min-width:980px){.hero-grid{grid-template-columns:1.1fr .9fr;gap:44px;}}
@@ -105,20 +112,6 @@
       box-shadow:var(--shadow-soft);margin-top:1rem;
     }
     @media(max-width:768px){.headshot{margin:auto;margin-top:1rem;}}
-
-    /* BIG promo ribbon */
-    .promo{
-      background:linear-gradient(90deg,#ffe08a,var(--primary));
-      color:#2b2b2b;
-      padding:14px 18px;
-      text-align:center;
-      font-weight:900;
-      font-size:clamp(1rem,2.4vw,1.25rem);
-      letter-spacing:.2px;
-      border-top:1px solid rgba(0,0,0,.05);
-      border-bottom:1px solid rgba(0,0,0,.08);
-    }
-    .promo small{display:block;color:#3d3d3d;font-weight:700;opacity:.9;margin-top:4px;font-size:.85rem}
 
     /* Sections */
     section{padding:clamp(38px,5.4vw,80px) 0;}
@@ -151,24 +144,41 @@
       background:#fff;box-shadow:var(--shadow-soft);
     }
 
-    /* === Sticky Mobile CTA (opens Intake Form in new tab) === */
+    /* === Sticky Mobile CTA (big tappable “Cash Advance up to $7,500”) === */
     .sticky-cta {
       position: fixed;
       left: 12px; right: 12px; bottom: 12px;
       z-index: 100;
-      display: none;
-      align-items: center; justify-content: space-between;
-      gap: 10px;
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 12px;
-      box-shadow: var(--shadow);
+      display: none; /* desktop hidden */
     }
-    .sticky-cta .cta-title { font-weight: 900; }
-    .sticky-cta .btn { white-space: nowrap; }
+    .sticky-cta-link{
+      display:flex; align-items:center; justify-content:center;
+      width:100%;
+      background: var(--bg);
+      color:#fff;
+      border:2px solid var(--primary);
+      border-radius:16px;
+      padding:14px 16px;
+      font-weight:900;
+      font-size:1.02rem;
+      letter-spacing:.2px;
+      text-align:center;
+      box-shadow: 0 6px 16px rgba(15,35,55,.22), 0 0 0 2px rgba(247,181,0,.0);
+      transition: background .2s ease, color .2s ease, transform .06s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .sticky-cta-link:hover{
+      background: var(--primary);
+      color: var(--bg);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(247,181,0,.28);
+      border-color: var(--primary);
+    }
+    .sticky-cta-link .big{
+      font-size:1.05rem;
+      margin-right:.35rem;
+    }
     @media (max-width: 768px){
-      .sticky-cta { display: flex; }
+      .sticky-cta { display:block; }
     }
   </style>
 </head>
@@ -191,20 +201,14 @@
       <!-- Header CTAs -->
       <div class="nav-cta">
         <!-- Desktop: Intake scrolls to embed -->
-        <a class="btn btn-primary desktop-only" href="#intake">Intake Form</a>
+        <a class="btn btn-split desktop-only" href="#intake">Intake Form</a>
         <!-- Mobile: Intake opens Jotform in new tab -->
-        <a class="btn btn-primary mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
+        <a class="btn btn-split mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
 
-        <a class="btn btn-ghost" href="mailto:tyrie7@gmail.com">Message Me</a>
+        <a class="btn btn-split" href="mailto:tyrie7@gmail.com">Message Me</a>
       </div>
     </div>
   </header>
-
-  <!-- BIG PROMO -->
-  <div class="promo">
-    💸 Advance Loans up to <strong>$7,500</strong>
-    <small>Subject to approval. Availability varies; ask for details.</small>
-  </div>
 
   <section class="hero">
     <div class="wrap hero-grid">
@@ -222,11 +226,11 @@
 
         <div class="row" style="margin:18px 0;">
           <!-- Desktop: scroll to intake -->
-          <a class="btn btn-primary desktop-only" href="#intake">Intake Form</a>
+          <a class="btn btn-split desktop-only" href="#intake">Intake Form</a>
           <!-- Mobile: open Jotform -->
-          <a class="btn btn-primary mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
+          <a class="btn btn-split mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
 
-          <a class="btn btn-ghost" href="mailto:tyrie7@gmail.com">Message Me</a>
+          <a class="btn btn-split" href="mailto:treed.chosentax@gmail.com">Message Me</a>
         </div>
       </div>
 
@@ -290,9 +294,9 @@
           </ul>
         </div>
         <div style="display:grid; align-content:center; gap:.6rem">
-          <a class="btn btn-primary desktop-only" href="#intake">Intake Form</a>
-          <a class="btn btn-primary mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
-          <a class="btn btn-ghost" href="mailto:tyrie7@gmail.com">Message Me</a>
+          <a class="btn btn-split desktop-only" href="#intake">Intake Form</a>
+          <a class="btn btn-split mobile-only" href="https://form.jotform.com/250008458652153" target="_blank" rel="noopener">Intake Form</a>
+          <a class="btn btn-split" href="mailto:tyrie7@gmail.com">Message Me</a>
         </div>
       </div>
     </div>
@@ -303,10 +307,10 @@
     <div class="wrap">
       <h2 class="section-title">Helpful Links</h2>
       <div class="row">
-        <a class="btn btn-primary" href="https://www.irs.gov/refunds" target="_blank" rel="noopener">Where’s My Refund</a>
-        <a class="btn btn-ghost" href="https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin" target="_blank" rel="noopener">Get My IP PIN</a>
-        <a class="btn btn-ghost" href="https://www.irs.gov/identity-theft-fraud-scams/identity-verification-for-irs-letter-recipients" target="_blank" rel="noopener">Verify My Return</a>
-        <a class="btn btn-ghost" href="https://www.healthcare.gov/" target="_blank" rel="noopener">Marketplace Insurance</a>
+        <a class="btn btn-split" href="https://www.irs.gov/refunds" target="_blank" rel="noopener">Where’s My Refund</a>
+        <a class="btn btn-split" href="https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin" target="_blank" rel="noopener">Get My IP PIN</a>
+        <a class="btn btn-split" href="https://www.irs.gov/identity-theft-fraud-scams/identity-verification-for-irs-letter-recipients" target="_blank" rel="noopener">Verify My Return</a>
+        <a class="btn btn-split" href="https://www.healthcare.gov/" target="_blank" rel="noopener">Marketplace Insurance</a>
       </div>
       <p class="muted" style="margin-top:10px">All links open official government websites in a new tab.</p>
     </div>
@@ -322,7 +326,7 @@
       </div>
       <div>
         <div class="subtle" style="font-weight:800;color:#fff;margin-bottom:.3rem;">Contact</div>
-        <div class="subtle">Email: <a href="mailto:treed.chosentax@gmail.com">treed.chosentax@gmail.com</a></div>
+        <div class="subtle">Email: <a href="mailto:tyrie7@gmail.com">tyrie7@gmail.com</a></div>
       </div>
       <div>
         <div class="subtle" style="font-weight:800;color:#fff;margin-bottom:.3rem;">Links</div>
@@ -335,15 +339,14 @@
     </div>
   </footer>
 
-  <!-- Sticky Mobile CTA -->
-  <div class="sticky-cta" role="dialog" aria-label="Quick intake">
-    <div class="cta-title">Free 15-min Intake</div>
-    <a class="btn btn-primary"
+  <!-- Sticky Mobile CTA: big tappable cash advance -->
+  <div class="sticky-cta" role="dialog" aria-label="Cash advance">
+    <a class="sticky-cta-link"
        href="https://form.jotform.com/250008458652153"
-       target="_blank" rel="noopener">
-      Intake Form
+       target="_blank" rel="noopener"
+       title="Open Intake Form">
+      <span class="big">💸 Cash Advance up to $7,500</span> • Tap to start intake
     </a>
-    <a class="btn btn-ghost" href="mailto:tyrie7@gmail.com">Message Me</a>
   </div>
 
   <script>
