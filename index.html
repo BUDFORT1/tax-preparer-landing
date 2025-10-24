@@ -12,7 +12,7 @@
   <meta property="og:description" content="Professional tax preparation in Norfolk, VA by Tyrie Reed — backed by Chosen Tax Professionals." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
-  <meta property="og:image" content="headshot-placeholder.jpg" />
+  <meta property="og:image" content="images/headshot-placeholder.jpg" />
 
   <style>
     :root{
@@ -87,7 +87,7 @@
     /* Hero */
     .hero{
       background: radial-gradient(1200px 600px at 90% -50%, #1b3a57 0%, transparent 60%), var(--bg);
-      color:#fff;padding: clamp(36px, 6vw, 80px) 0;overflow:hidden;
+      color:#fff;padding: clamp(24px, 6vw, 80px) 0 0;overflow:hidden;
     }
     .hero-grid{display:grid;gap:26px;align-items:center;}
     @media(min-width:980px){.hero-grid{grid-template-columns:1.1fr .9fr;gap:44px;}}
@@ -105,6 +105,20 @@
       box-shadow:var(--shadow-soft);margin-top:1rem;
     }
     @media(max-width:768px){.headshot{margin:auto;margin-top:1rem;}}
+
+    /* BIG promo ribbon */
+    .promo{
+      background:linear-gradient(90deg,#ffe08a,var(--primary));
+      color:#2b2b2b;
+      padding:14px 18px;
+      text-align:center;
+      font-weight:900;
+      font-size:clamp(1rem,2.4vw,1.25rem);
+      letter-spacing:.2px;
+      border-top:1px solid rgba(0,0,0,.05);
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    .promo small{display:block;color:#3d3d3d;font-weight:700;opacity:.9;margin-top:4px;font-size:.85rem}
 
     /* Sections */
     section{padding:clamp(38px,5.4vw,80px) 0;}
@@ -142,7 +156,7 @@
       position: fixed;
       left: 12px; right: 12px; bottom: 12px;
       z-index: 100;
-      display: none;                 /* hidden by default (desktop) */
+      display: none;
       align-items: center; justify-content: space-between;
       gap: 10px;
       background: #ffffff;
@@ -154,7 +168,7 @@
     .sticky-cta .cta-title { font-weight: 900; }
     .sticky-cta .btn { white-space: nowrap; }
     @media (max-width: 768px){
-      .sticky-cta { display: flex; } /* show only on mobile/tablet */
+      .sticky-cta { display: flex; }
     }
   </style>
 </head>
@@ -186,6 +200,12 @@
     </div>
   </header>
 
+  <!-- BIG PROMO -->
+  <div class="promo">
+    💸 Advance Loans up to <strong>$7,500</strong>
+    <small>Subject to approval. Availability varies; ask for details.</small>
+  </div>
+
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -197,7 +217,7 @@
         <h1>Expert Tax Prep with a Local Touch — Backed by <span style="color:#ffd166">Chosen Tax Professionals</span></h1>
         <p class="lead">I’m <strong>Tyrie Reed</strong>, your neighborhood tax preparer serving Norfolk and Hampton Roads. Whether individual or business, I make filing fast, accurate, and stress-free.</p>
 
-        <!-- Headshot placeholder -->
+        <!-- Headshot -->
         <img src="images/headshot-placeholder.jpg" alt="Professional headshot of Tyrie Reed" class="headshot" />
 
         <div class="row" style="margin:18px 0;">
@@ -248,7 +268,7 @@
     <div class="wrap">
       <h2 class="section-title">How It Works</h2>
       <div class="grid-3">
-        <div class="card"><h4>1. Intake</h4><p class="muted">Complete the intake form </p></div>
+        <div class="card"><h4>1. Intake</h4><p class="muted">Complete the intake form (desktop inline or mobile fullscreen).</p></div>
         <div class="card"><h4>2. Upload</h4><p class="muted">Securely send W-2s, 1099s, receipts, and documents via encrypted portal.</p></div>
         <div class="card"><h4>3. File</h4><p class="muted">I prepare and e-file your return; you review, sign, and relax.</p></div>
       </div>
@@ -278,6 +298,20 @@
     </div>
   </section>
 
+  <!-- HELPFUL LINKS -->
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Helpful Links</h2>
+      <div class="row">
+        <a class="btn btn-primary" href="https://www.irs.gov/refunds" target="_blank" rel="noopener">Where’s My Refund</a>
+        <a class="btn btn-ghost" href="https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin" target="_blank" rel="noopener">Get My IP PIN</a>
+        <a class="btn btn-ghost" href="https://www.irs.gov/identity-theft-fraud-scams/identity-verification-for-irs-letter-recipients" target="_blank" rel="noopener">Verify My Return</a>
+        <a class="btn btn-ghost" href="https://www.healthcare.gov/" target="_blank" rel="noopener">Marketplace Insurance</a>
+      </div>
+      <p class="muted" style="margin-top:10px">All links open official government websites in a new tab.</p>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="wrap foot-grid">
@@ -301,7 +335,7 @@
     </div>
   </footer>
 
-  <!-- Sticky Mobile CTA  
+  <!-- Sticky Mobile CTA -->
   <div class="sticky-cta" role="dialog" aria-label="Quick intake">
     <div class="cta-title">Free 15-min Intake</div>
     <a class="btn btn-primary"
@@ -310,8 +344,8 @@
       Intake Form
     </a>
     <a class="btn btn-ghost" href="mailto:tyrie7@gmail.com">Message Me</a>
-  </div>   
--->
+  </div>
+
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
